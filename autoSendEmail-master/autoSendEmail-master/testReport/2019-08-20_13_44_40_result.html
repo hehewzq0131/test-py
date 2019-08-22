@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    
+<style type="text/css" media="screen">
+
+
+/* -- css div popup ------------------------------------------------------------------------ */
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #99CCFF;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 10pt;
+    width: 500px;
+}
+}
+/* -- report ------------------------------------------------------------------------ */
+
+#show_detail_line .label {
+    font-size: 85%;
+    cursor: pointer;
+}
+
+#show_detail_line {
+    margin: 2em auto 1em auto;
+					   
+}
+
+#total_row  { font-weight: bold; }						   
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2019-08-20 13:44:40</p>
+<p class='attribute'><strong>Duration:</strong> 0:02:08.261000</p>
+<p class='attribute'><strong>Status:</strong> <span class="text text-success">Pass <strong>17</strong></span> <span class="text text-warning">Error <strong>7</strong></span></p>
+
+<p class='description'>用例执行情况：</p>
+</div>
+
+
+
+<p id='show_detail_line'>
+<span class="label label-primary" onclick="showCase(0)">Summary</span>
+<span class="label label-danger" onclick="showCase(1)">Failed</span>
+<span class="label label-default" onclick="showCase(2)">All</span>
+</p>
+<table id='result_table' class="table">
+ <thead>
+        <tr id='header_row'>
+            <th>Test Group/Test case</td>
+            <th>Count</td>
+            <th>Pass</td>
+            <th>Fail</td>
+            <th>Error</td>
+            <th>View</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+<tr class='text text-success'>
+    <td>Test_Calc.TestCalc: 计算器模块</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c1',3)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add: 计算器加法模块</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.1')" >
+        pass</a>
+
+    <div id='div_pt1.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_divide: 计算器除法法模块</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.2')" >
+        pass</a>
+
+    <div id='div_pt1.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_multiple: 计算器乘法模块</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt1.3')" >
+        pass</a>
+
+    <div id='div_pt1.3' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt1.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt1.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>Test_Calc2.TestCalc: 计算器模块2</td>
+    <td>3</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c2',3)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add: 计算器加法模块2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_divide: 计算器除法法模块2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_multiple: 计算器乘法模块2</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>Test_Calc3.TestCalc: 计算器模块3</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c3',4)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_add: 计算器加法模块3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.1')" >
+        pass</a>
+
+    <div id='div_pt3.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_divide: 计算器除法法模块3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.2')" >
+        pass</a>
+
+    <div id='div_pt3.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.2: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_minus: 计算器减法模块3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.3')" >
+        pass</a>
+
+    <div id='div_pt3.3' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.3: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_multiple: 计算器乘法模块3</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.4')" >
+        pass</a>
+
+    <div id='div_pt3.4' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.4: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-warning'>
+    <td>unittest.loader._FailedTest</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td>4</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c4',4)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>Test_TJJaEdgoods</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        error</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: ImportError: Failed to import test module: Test_TJJaEdgoods
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_TJJaEdgoods.py", line 11, in &lt;module&gt;
+    from pymouse.windows import PyMouse
+  File "D:\software\python\py3.5.3\lib\site-packages\pymouse\__init__.py", line 92, in &lt;module&gt;
+    from windows import PyMouse, PyMouseEvent
+ImportError: No module named 'windows'
+
+ImportError: Failed to import test module: Test_TJJaEdgoods
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_TJJaEdgoods.py", line 11, in &lt;module&gt;
+    from pymouse.windows import PyMouse
+  File "D:\software\python\py3.5.3\lib\site-packages\pymouse\__init__.py", line 92, in &lt;module&gt;
+    from windows import PyMouse, PyMouseEvent
+ImportError: No module named 'windows'
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.2' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>Test_Tjj_autoit</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.2')" >
+        error</a>
+
+    <div id='div_ft4.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.2: ImportError: Failed to import test module: Test_Tjj_autoit
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_Tjj_autoit.py", line 46, in &lt;module&gt;
+    target0 = driver.find_element_by_xpath('/html/body/div[3]/table/tbody/tr/td[1]/dl/dt[9]/span')
+  File "D:\software\python\py3.5.3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\software\python\py3.5.3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\software\python\py3.5.3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\software\python\py3.5.3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[3]/table/tbody/tr/td[1]/dl/dt[9]/span
+
+
+ImportError: Failed to import test module: Test_Tjj_autoit
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_Tjj_autoit.py", line 46, in &lt;module&gt;
+    target0 = driver.find_element_by_xpath('/html/body/div[3]/table/tbody/tr/td[1]/dl/dt[9]/span')
+  File "D:\software\python\py3.5.3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
+    return self.find_element(by=By.XPATH, value=xpath)
+  File "D:\software\python\py3.5.3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "D:\software\python\py3.5.3\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "D:\software\python\py3.5.3\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: /html/body/div[3]/table/tbody/tr/td[1]/dl/dt[9]/span
+
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.3' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>Test_wechat</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.3')" >
+        error</a>
+
+    <div id='div_ft4.3' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.3: ImportError: Failed to import test module: Test_wechat
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_wechat.py", line 7, in &lt;module&gt;
+    import itchat
+ImportError: No module named 'itchat'
+
+ImportError: Failed to import test module: Test_wechat
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_wechat.py", line 7, in &lt;module&gt;
+    import itchat
+ImportError: No module named 'itchat'
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.4' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>test_configparser</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.4')" >
+        error</a>
+
+    <div id='div_ft4.4' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.4: ImportError: Failed to import test module: test_configparser
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\test_configparser.py", line 22, in &lt;module&gt;
+    cf.options('mysql')
+  File "D:\software\python\py3.5.3\lib\configparser.py", line 674, in options
+    raise NoSectionError(section) from None
+configparser.NoSectionError: No section: 'mysql'
+
+ImportError: Failed to import test module: test_configparser
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 428, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "D:\software\python\py3.5.3\lib\unittest\loader.py", line 369, in _get_module_from_name
+    __import__(name)
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\test_configparser.py", line 22, in &lt;module&gt;
+    cf.options('mysql')
+  File "D:\software\python\py3.5.3\lib\configparser.py", line 674, in options
+    raise NoSectionError(section) from None
+configparser.NoSectionError: No section: 'mysql'
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>Test_auto.Baidu</td>
+    <td>2</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c5',2)">Detail</a></td>
+</tr>
+
+<tr id='pt5.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_baidu_serch</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt5.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_baidu_set</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-success'>
+    <td>Test_baidu_selenium.Test_baidu</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c6',4)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_baidu_gaoji_search</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.2' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_baidu_search</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.3' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_baidu_search_shezhi</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt6.4' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_down</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='text text-warning'>
+    <td>Test_requests.somedata</td>
+    <td>3</td>
+    <td>0</td>
+    <td>0</td>
+    <td>3</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c7',3)">Detail</a></td>
+</tr>
+
+<tr id='ft7.1' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>test_aalogin</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.1')" >
+        error</a>
+
+    <div id='div_ft7.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.1: Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1107, in request
+    self._send_request(method, url, body, headers)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1152, in _send_request
+    self.endheaders(body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1103, in endheaders
+    self._send_output(message_body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 934, in _send_output
+    self.send(msg)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 877, in send
+    self.connect()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 181, in connect
+    conn = self._new_conn()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 168, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x0000000004101710&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000000004101710&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 36, in test_aalogin
+    res=requests.get(url=self.url,headers=self.headers)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000000004101710&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1107, in request
+    self._send_request(method, url, body, headers)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1152, in _send_request
+    self.endheaders(body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1103, in endheaders
+    self._send_output(message_body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 934, in _send_output
+    self.send(msg)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 877, in send
+    self.connect()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 181, in connect
+    conn = self._new_conn()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 168, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x0000000004101710&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000000004101710&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 36, in test_aalogin
+    res=requests.get(url=self.url,headers=self.headers)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000000004101710&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.2' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>test_authentication</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.2')" >
+        error</a>
+
+    <div id='div_ft7.2' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.2: Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1107, in request
+    self._send_request(method, url, body, headers)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1152, in _send_request
+    self.endheaders(body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1103, in endheaders
+    self._send_output(message_body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 934, in _send_output
+    self.send(msg)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 877, in send
+    self.connect()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 181, in connect
+    conn = self._new_conn()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 168, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x0000000004140940&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000000004140940&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 44, in test_authentication
+    token=self.test_aalogin()
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 36, in test_aalogin
+    res=requests.get(url=self.url,headers=self.headers)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000000004140940&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1107, in request
+    self._send_request(method, url, body, headers)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1152, in _send_request
+    self.endheaders(body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1103, in endheaders
+    self._send_output(message_body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 934, in _send_output
+    self.send(msg)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 877, in send
+    self.connect()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 181, in connect
+    conn = self._new_conn()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 168, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x0000000004140940&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000000004140940&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 44, in test_authentication
+    token=self.test_aalogin()
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 36, in test_aalogin
+    res=requests.get(url=self.url,headers=self.headers)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x0000000004140940&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.3' class='text text-success'>
+    <td class='text text-warning'><div class='testcase'>test_setpayconfig</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.3')" >
+        error</a>
+
+    <div id='div_ft7.3' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.3: Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1107, in request
+    self._send_request(method, url, body, headers)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1152, in _send_request
+    self.endheaders(body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1103, in endheaders
+    self._send_output(message_body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 934, in _send_output
+    self.send(msg)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 877, in send
+    self.connect()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 181, in connect
+    conn = self._new_conn()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 168, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000000000360DB00&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000000000360DB00&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 67, in test_setpayconfig
+    token=self.test_aalogin()
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 36, in test_aalogin
+    res=requests.get(url=self.url,headers=self.headers)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000000000360DB00&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    (self._dns_host, self.port), self.timeout, **extra_kw)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 80, in create_connection
+    raise err
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\connection.py", line 70, in create_connection
+    sock.connect(sa)
+TimeoutError: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 600, in urlopen
+    chunked=chunked)
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 354, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1107, in request
+    self._send_request(method, url, body, headers)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1152, in _send_request
+    self.endheaders(body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 1103, in endheaders
+    self._send_output(message_body)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 934, in _send_output
+    self.send(msg)
+  File "D:\software\python\py3.5.3\lib\http\client.py", line 877, in send
+    self.connect()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 181, in connect
+    conn = self._new_conn()
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connection.py", line 168, in _new_conn
+    self, "Failed to establish a new connection: %s" % e)
+urllib3.exceptions.NewConnectionError: &lt;urllib3.connection.HTTPConnection object at 0x000000000360DB00&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 449, in send
+    timeout=timeout
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\connectionpool.py", line 638, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\software\python\py3.5.3\lib\site-packages\urllib3\util\retry.py", line 398, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000000000360DB00&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 67, in test_setpayconfig
+    token=self.test_aalogin()
+  File "D:\study\python\autoSendEmail-master\autoSendEmail-master\test_case\Test_requests.py", line 36, in test_aalogin
+    res=requests.get(url=self.url,headers=self.headers)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\api.py", line 60, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\software\python\py3.5.3\lib\site-packages\requests\adapters.py", line 516, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='180.167.180.52', port=11080): Max retries exceeded with url: /exchangeApi/user/login?brokerId=10003 (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x000000000360DB00&gt;: Failed to establish a new connection: [WinError 10060] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。',))
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='text text-success'>
+    <td>Test_unittest.TestBaidu</td>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a class="btn btn-xs btn-primary"href="javascript:showClassDetail('c8',1)">Detail</a></td>
+</tr>
+
+<tr id='pt8.1' class='hiddenRow'>
+    <td class='text text-success'><div class='testcase'>test_baidu</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link btn btn-xs btn-default" onfocus='this.blur();' href="javascript:showTestDetail('div_pt8.1')" >
+        pass</a>
+
+    <div id='div_pt8.1' class="popup_window">
+        <div style='text-align: right;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt8.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt8.1: 
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+    </tbody>
+    <tfoot>
+        <tr id='total_row'>
+            <td>Total</td>
+            <td>24</td>
+            <td class="text text-success">17</td>
+            <td class="text text-danger">0</td>
+            <td class="text text-warning">7</td>
+            <td>&nbsp;</td>
+        </tr>
+    </tfoot>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
